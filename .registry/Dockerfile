@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-RUN apt-get update && apt-get install -y git curl wget && apt-get clean
+RUN apt-get update && apt-get install -y git curl wget pip && apt-get clean
 RUN wget -O- https://aka.ms/install-vscode-server/setup.sh | sh
 RUN pip install poetry pytest black ruff
 
