@@ -1,15 +1,15 @@
-FROM ubuntu:22.04
+FROM bookworm-slim
 
 RUN apt-get update && apt-get install -y git curl wget pip && apt-get clean
 RUN wget -O- https://aka.ms/install-vscode-server/setup.sh | sh
 RUN pip install poetry pytest black ruff
 
-RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O install_miniconda.sh \
-    && bash install_miniconda.sh -b -p /opt/conda \
-    && rm install_miniconda.sh
-ENV PATH="/opt/conda/bin:${PATH}"
+# RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O install_miniconda.sh \
+#     && bash install_miniconda.sh -b -p /opt/conda \
+#     && rm install_miniconda.sh
+# ENV PATH="/opt/conda/bin:${PATH}"
 
-COPY --from=1password/op:2 /usr/local/bin/op /usr/local/bin/op
+# COPY --from=1password/op:2 /usr/local/bin/op /usr/local/bin/op
 
 EXPOSE 8443/tcp
 
