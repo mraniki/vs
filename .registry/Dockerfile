@@ -15,10 +15,15 @@ RUN apt-get update && \
     pip install pytest && \
     rm -rf /var/lib/apt/lists/*
 
+RUN wget -q -P /tmp \
+  https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+    && bash /tmp/Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda \
+    && rm /tmp/Miniconda3-latest-Linux-x86_64.sh
+
 COPY --from=1password/op:2 /usr/local/bin/op /usr/local/bin/op
 
-COPY ./app/ /app
-RUN chmod -R 755 /app
+COPY --chmod=0755 ./app/ /app
+# RUN chmod -R 755 /app
 
 EXPOSE 8443/tcp
 
