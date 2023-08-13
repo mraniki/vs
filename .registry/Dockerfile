@@ -1,8 +1,7 @@
 FROM debian:bookworm-slim
 
-RUN apt update && apt install -y git curl wget ca-certificates software-properties-common apt-transport-https python3-dev python3-pip
-RUN python3 -m pip install --upgrade pip
-# RUN python3 -m pip install --no-cache-dir poetry pytest black ruff
+RUN apt update && apt install -y git curl wget python3-dev python3-pip
+#RUN python3 -m pip install --no-cache-dir poetry pytest black ruff
 #RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 #RUN add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" | tee /etc/apt/sources.list.d/vscode.list
 RUN wget https://go.microsoft.com/fwlink/?LinkID=760868 -O vscode.deb
