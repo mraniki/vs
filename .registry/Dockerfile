@@ -22,7 +22,7 @@ RUN wget -q -P /tmp \
 
 COPY --from=1password/op:2 /usr/local/bin/op /usr/local/bin/op
 
-COPY --chmod=0755 ./app/ /app
+# COPY --chmod=0755 ./app/ /app
 # RUN chmod -R 755 /app
 
 EXPOSE 8443/tcp
@@ -32,4 +32,5 @@ RUN mkdir /vscode
 VOLUME [ "/vscode" ]
 VOLUME [ "/data" ]
 
-CMD /app/code-server.sh
+# CMD /app/code-server.sh
+CMD ["code-server", "serve-local" ,"--host","0.0.0.0" , "--accept-server-license-terms"]
