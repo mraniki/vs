@@ -1,8 +1,8 @@
 FROM debian:bookworm-slim
 
 RUN apt update && apt install -y git curl wget python3-dev python3-pip
-RUN pip install --upgrade pip
-RUN pip install --no-cache-dir poetry pytest black ruff
+#RUN python3 -m pip install --upgrade pip setuptools wheel
+#RUN pip install --no-cache-dir poetry pytest black ruff
 RUN wget https://go.microsoft.com/fwlink/?LinkID=760868 -O vscode.deb
 RUN apt install -y vscode.deb
 
