@@ -1,4 +1,4 @@
-FROM bookworm-slim
+FROM debian:bookworm-slim
 
 RUN apt-get update && apt-get install -y git curl wget pip && apt-get clean
 RUN wget -O- https://aka.ms/install-vscode-server/setup.sh | sh
