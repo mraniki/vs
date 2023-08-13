@@ -3,6 +3,7 @@ FROM python:3.11
 RUN apt-get update && apt-get install -y git curl wget && apt-get clean
 RUN curl -fsSL https://aka.ms/install-vscode-server/setup.sh | sh
 
+
 RUN pip install -U pip \
     && pip install --no-cache-dir poetry \
     && pip install --no-cache-dir pytest \
