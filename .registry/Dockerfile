@@ -18,6 +18,7 @@ RUN apt-get update && \
 COPY --from=1password/op:2 /usr/local/bin/op /usr/local/bin/op
 
 COPY ./app/ /app
+COPY chmod -R 755 /app
 
 EXPOSE 8443/tcp
 
