@@ -24,5 +24,5 @@ VOLUME [ "/vscode" ]
 VOLUME [ "/data" ]
 
 
-# CMD code-server serve-local --accept-server-license-terms --host 0.0.0.0 --server-data-dir /data --without-connection-token
-ENTRYPOINT ["code-server", "serve-local","--accept-server-license-terms","--without-connection-token","--host","0.0.0.0","--verbose"]
+CMD code-server
+# ENTRYPOINT ["code-server", "serve-local","--accept-server-license-terms","--without-connection-token","--host","0.0.0.0","--verbose"]
