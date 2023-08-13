@@ -1,8 +1,8 @@
 FROM debian:bookworm-slim
 
 RUN apt-get update && apt-get install -y git curl wget && apt-get clean
-RUN apt-get install python3-dev python3-pip
-# RUN python3 -m pip install --upgrade pip
+RUN apt-get install -y python3-dev python3-pip
+#RUN python3 -m pip install --upgrade pip
 # RUN python3 -m pip install --no-cache-dir poetry pytest black ruff
 RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 RUN add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
