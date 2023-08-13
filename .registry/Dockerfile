@@ -33,4 +33,6 @@ VOLUME [ "/vscode" ]
 VOLUME [ "/data" ]
 
 # CMD /app/code-server.sh
-CMD ["code-server", "serve-local" ,"--host","0.0.0.0" , "--accept-server-license-terms"]
+CMD ["code-server"]
+#, "--accept-server-license-terms", "serve-local","--host","0.0.0.0","--server-data-dir","/data"]
+
