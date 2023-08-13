@@ -1,0 +1,15 @@
+name: 👷Flow
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+  merge_group:
+
+
+jobs:
+  docker:
+    uses: mraniki/coding_toolset/.github/workflows/🐳Docker.yml@main
+    secrets: inherit
+
