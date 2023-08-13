@@ -2,7 +2,8 @@ FROM debian:bookworm-slim
 
 RUN apt-get update && apt-get install -y git curl wget pip && apt-get clean
 RUN wget -O- https://aka.ms/install-vscode-server/setup.sh | sh
-RUN pip install poetry pytest black ruff
+RUN python3 -m pip install --upgrade pip
+RUN python3 -m pip install --no-cache-dir poetry pytest black ruff
 
 # RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O install_miniconda.sh \
 #     && bash install_miniconda.sh -b -p /opt/conda \
