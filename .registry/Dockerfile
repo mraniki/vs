@@ -9,11 +9,11 @@ RUN apt-get update && \
 
 RUN wget -O- https://aka.ms/install-vscode-server/setup.sh | sh
 
-RUN apt-get update && \
-    pip install -U pip && \
-    pip install poetry &&
-    pip install pytest 
-   rm -rf /var/lib/apt/lists/*
+RUN apt-get update \
+    pip install -U pip \
+    pip install poetry \
+    pip install pytest \
+    rm -rf /var/lib/apt/lists/*
 
 COPY --from=1password/op:2 /usr/local/bin/op /usr/local/bin/op
 
