@@ -3,10 +3,12 @@ FROM debian:bookworm-slim
 RUN apt update && apt install -y git curl wget python3-dev python3-pip
 
 RUN wget https://go.microsoft.com/fwlink/?LinkID=760868 -O /tmp/vscode.deb
-RUN apt-get install -y /tmp/vscode.deb
+RUN apt install -y /tmp/vscode.deb
 
-RUN pip3 install --upgrade pip setuptools wheel
-RUN pip3 install poetry pytest ruff black
+#RUN pip3 install --upgrade pip setuptools wheel
+#RUN pip3 install poetry pytest ruff black
+RUN code --install-extension ms-python.python
+
 COPY --from=1password/op:2 /usr/local/bin/op /usr/local/bin/op
 
 EXPOSE 8443/tcp
