@@ -25,4 +25,4 @@ VOLUME [ "/data" ]
 
 
 CMD code-server
-# ENTRYPOINT ["code-server", "serve-local","--accept-server-license-terms","--without-connection-token","--host","0.0.0.0","--verbose"]
+
