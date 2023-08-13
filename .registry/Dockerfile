@@ -9,24 +9,21 @@ RUN apt-get update && \
 
 RUN wget -O- https://aka.ms/install-vscode-server/setup.sh | sh
 
-# RUN apt-get update && \
-# apt-get -y install chromium && \
-#   pip install -U pip && \
-#   pip install playwright && \
-#   playwright install chromium && playwright install-deps && \
-#   rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    pip install -U pip && \
+    pip install poetry &&
+    pip install pytest 
+   rm -rf /var/lib/apt/lists/*
 
-ENV OP_SERVICE_ACCOUNT_TOKEN=NONE
 COPY --from=1password/op:2 /usr/local/bin/op /usr/local/bin/op
 
-COPY ./root/ /
+COPY ./app/ /app
 
 EXPOSE 8443/tcp
 
 RUN mkdir /vscode
 
 VOLUME [ "/vscode" ]
-
 VOLUME [ "/data" ]
 
-CMD /entrypoint.sh
+CMD /app/code-server.sh
