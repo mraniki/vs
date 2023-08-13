@@ -21,4 +21,5 @@ RUN mkdir -m 755 -p /vscode
 VOLUME [ "/vscode" ]
 VOLUME [ "/data" ]
 
-CMD code-server --accept-server-license-terms --disable-telemetry
+# CMD code-server --accept-server-license-terms --disable-telemetry
+CMD /bin/bash -c "code-server --accept-server-license-terms serve-local --disable-telemetry --without-connection-token --host 0.0.0.0 --server-data-dir /data"
