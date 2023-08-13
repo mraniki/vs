@@ -1,9 +1,7 @@
-FROM python:3.11
+FROM ubuntu
 
 RUN apt-get update && apt-get install -y git curl wget && apt-get clean
-RUN curl -fsSL https://aka.ms/install-vscode-server/setup.sh | sh
-
-
+RUN wget -O- https://aka.ms/install-vscode-server/setup.sh | sh
 RUN pip install -U pip \
     && pip install --no-cache-dir poetry \
     && pip install --no-cache-dir pytest \
@@ -23,6 +21,10 @@ RUN mkdir -m 755 -p /vscode
 VOLUME [ "/vscode" ]
 VOLUME [ "/data" ]
 
-
-CMD code-server
-
+CMD [ "/usr/local/bin/code-server", 
+    "serve-local", 
+    "--accept-server-license-terms",
+    "--disable-telemetry",
+    "--server-data-dir", "/data", 
+    "--without-connection-token", 
+    "--host 0.0.0.0"]
