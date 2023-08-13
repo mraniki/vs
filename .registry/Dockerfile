@@ -1,7 +1,7 @@
 FROM debian:bookworm-slim
 
 RUN apt update && apt install -y git curl wget python3-dev python3-pip
-RUN pip install ruff
+#RUN pip3 install ruff
 RUN wget https://go.microsoft.com/fwlink/?LinkID=760868 -O /tmp/vscode.deb
 RUN apt install -y /tmp/vscode.deb
 
