@@ -2,7 +2,8 @@ FROM debian:bookworm-slim
 
 RUN apt update && apt install -y git curl wget python3-dev python3-pip
 
-RUN wget https://go.microsoft.com/fwlink/?LinkID=760868 -O vscode.deb && apt install ./vscode.deb
+RUN wget https://go.microsoft.com/fwlink/?LinkID=760868 -O vscode.deb
+RUN dpkg -i vscode.deb
 
 COPY --from=1password/op:2 /usr/local/bin/op /usr/local/bin/op
 
