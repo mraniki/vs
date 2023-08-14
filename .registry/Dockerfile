@@ -10,8 +10,7 @@ RUN apt update && apt install -y git curl wget
 RUN wget "https://update.code.visualstudio.com/latest/server-linux-x64/stable" -O /tmp/vscode-server-linux-x64.tar.gz \  
     && mkdir /tmp/vscode-server \  
     && tar --no-same-owner -zxvf /tmp/vscode-server-linux-x64.tar.gz -C /tmp/vscode-server --strip-components=1 \   
-    && mkdir -p /root/.vscode-server/bin/
-    && cp -r /tmp/vscode-server/*  /root/.vscode-server/bin/.  
+    && mkdir -p /root/.vscode-server/bin/ && cp -r /tmp/vscode-server/*  /root/.vscode-server/bin/.  
 RUN ls root/.vscode-server/bin/
 ENV PATH=/root/.vscode-server/bin/:$PATH
 RUN code-server --install-extension ms-python.python
