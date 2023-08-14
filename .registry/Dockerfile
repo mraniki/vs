@@ -9,13 +9,12 @@ RUN apt update && apt install -y git curl wget
 #RUN wget https://gist.githubusercontent.com/b01/0a16b6645ab7921b0910603dfb85e4fb/raw/f32b6371ed66085251c92bf98bfe9b7109c68e09/download-vs-code-server.sh -O /root/vserver.sh && chmod a+x /root/vserver.sh && ./root/vserver.sh
 RUN wget "https://update.code.visualstudio.com/latest/server-linux-x64/stable" -O /tmp/vscode-server-linux-x64.tar.gz \  
     && mkdir /tmp/vscode-server \  
-    && tar --no-same-owner -zxvf /tmp/vscode-server-linux-x64.tar.gz -C /root/vscode-server 
-    #--strip-components=1 \  
-   # && commit_id=$(cat /tmp/vscode-server/product.json | grep '"commit":' | sed -E 's/.*"([^"]+)".*/\1/') \  
-   # && mkdir -p root/.vscode-server/bin/${commit_id} \  
-   # && cp -r /tmp/vscode-server/*  root/.vscode-server/bin/${commit_id}/.  
+    && tar --no-same-owner -zxvf /tmp/vscode-server-linux-x64.tar.gz -C /tmp/vscode-server --strip-components=1 \  
+    && commit_id=$(cat /tmp/vscode-server/product.json | grep '"commit":' | sed -E 's/.*"([^"]+)".*/\1/') \  
+    && mkdir -p /root/.vscode-server/bin/${commit_id} \  
+   && cp -r /tmp/vscode-server/*  /root/.vscode-server/bin/${commit_id}/.  
 #RUN which code-server
-ENV PATH=/root/vscode-server/bin/:$PATH
+ENV PATH=/root/.vscode-server/bin/:$PATH
 RUN code-server --install-extension ms-python.python
 
 EXPOSE 8443/tcp
