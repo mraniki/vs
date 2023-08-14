@@ -13,9 +13,9 @@ RUN wget "https://update.code.visualstudio.com/latest/server-linux-x64/stable" -
     && commit_id=$(cat /tmp/vscode-server/product.json | grep '"commit":' | sed -E 's/.*"([^"]+)".*/\1/') \  
     && mkdir -p root/.vscode-server/bin/${commit_id} \  
     && cp -r /tmp/vscode-server/*  root/.vscode-server/bin/${commit_id}/.  
-RUN which code-server
+#RUN which code-server
 ENV PATH=/root/.vscode-server/bin/:$PATH
-#RUN code-server --install-extension ms-python.python
+RUN code-server --install-extension ms-python.python
 
 EXPOSE 8443/tcp
 
