@@ -12,7 +12,7 @@ RUN wget "https://update.code.visualstudio.com/latest/server-linux-x64/stable" -
     && tar --no-same-owner -zxvf /tmp/vscode-server-linux-x64.tar.gz -C /tmp/vscode-server --strip-components=1 \   
     && mkdir -p /root/.vscode-server/bin/ && cp -r /tmp/vscode-server/*  /root/.vscode-server/bin/.  
 RUN ls root/.vscode-server/bin/
-ENV PATH=/root/.vscode-server/bin/:$PATH
+ENV PATH=/root/.vscode-server/bin/bin/:$PATH
 RUN code-server --install-extension ms-python.python
 
 EXPOSE 8443/tcp
