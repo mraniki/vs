@@ -8,7 +8,7 @@ RUN apt update && apt install -y git curl wget
 
 RUN wget https://gist.githubusercontent.com/b01/0a16b6645ab7921b0910603dfb85e4fb/raw/f32b6371ed66085251c92bf98bfe9b7109c68e09/download-vs-code-server.sh -O /root/vserver.sh && chmod a+x /root/vserver.sh && ./root/vserver.sh
 ENV PATH=/root/.vscode-server/bin/default_version/bin:$PATH
-RUN code-server --install-extension ms-python.python
+#RUN code-server --install-extension ms-python.python
 
 EXPOSE 8443/tcp
 
