@@ -22,4 +22,4 @@ VOLUME [ "/vscode" ]
 VOLUME [ "/data" ]
 EXPOSE 8443/tcp
 
-CMD "code-server --accept-server-license-terms serve-local --disable-telemetry --without-connection-token --host 0.0.0.0 --server-data-dir /data"
+CMD "code-server --accept-server-license-terms serve-local --disable-telemetry --without-connection-token --host 0.0.0.0"
