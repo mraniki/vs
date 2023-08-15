@@ -14,12 +14,12 @@ RUN rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 RUN ls root/.vscode-server/bin/
 ENV PATH=/root/.vscode-server/bin/:$PATH
-RUN echo "${PATH}" >> /root/.bashrc
+RUN echo "${PATH}" >> /etc/environment
 
-#RUN code-server --install-extension ms-python.python
+RUN code-server --install-extension ms-python.python
 RUN mkdir -m 755 -p /vscode
 VOLUME [ "/vscode" ]
 VOLUME [ "/data" ]
 EXPOSE 8443/tcp
 
-CMD /bin/sh -c "code-server --accept-server-license-terms serve-local --disable-telemetry --without-connection-token --host 0.0.0.0 --server-data-dir /data"
+CMD "code-server --accept-server-license-terms serve-local --disable-telemetry --without-connection-token --host 0.0.0.0 --server-data-dir /data"
