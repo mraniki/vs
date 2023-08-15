@@ -17,9 +17,16 @@ ENV PATH=/root/.vscode-server/bin/:$PATH
 RUN echo "${PATH}" >> /etc/environment
 
 RUN code-server --install-extension ms-python.python
+RUN code-server --install-extension charliermarsh.ruff
+#Codeium.codeium
+#seatonjiang.gitmoji
+#donjayamanne.python-environment-manager
+
 RUN mkdir -m 755 -p /vscode
 VOLUME [ "/vscode" ]
 VOLUME [ "/data" ]
 EXPOSE 8443/tcp
 
-CMD "code-server --accept-server-license-terms serve-local --disable-telemetry --without-connection-token --host 0.0.0.0"
+CMD ["/root/.vscode-server/bin/code-server"]
+
+ENTRYPOINT ["--accept-server-license-terms serve-local --disable-telemetry --without-connection-token --host 0.0.0.0"]
