@@ -27,6 +27,10 @@ VOLUME [ "/vscode" ]
 VOLUME [ "/data" ]
 EXPOSE 8443/tcp
 
-CMD ["/root/.vscode-server/bin/code-server"]
+#CMD ["/root/.vscode-server/bin/code-server"]
 
-ENTRYPOINT ["--accept-server-license-terms serve-local --disable-telemetry --without-connection-token --host 0.0.0.0"]
+#ENTRYPOINT ["--accept-server-license-terms serve-local --disable-telemetry --without-connection-token --host 0.0.0.0"]
+
+ENTRYPOINT ["code-server", "serve-local", "--accept-server-license-terms", "--disable-telemetry", "--without-connection-token", "--host", "0.0.0.0"]
+
+
