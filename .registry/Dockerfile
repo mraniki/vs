@@ -7,7 +7,7 @@ RUN wget "https://update.code.visualstudio.com/latest/server-linux-x64/stable" -
     && mkdir /tmp/vscode-server \  
     && tar --no-same-owner -zxvf /tmp/vscode-server-linux-x64.tar.gz -C /tmp/vscode-server --strip-components=1 \   
     && mkdir -p /root/.vscode-server && cp -r /tmp/vscode-server/*  /root/.vscode-server/.  
-
+RUN apt-get update
 RUN apt-get clean autoclean
 RUN apt-get autoremove --yes
 RUN rm -rf /var/lib/{apt,dpkg,cache,log}/
