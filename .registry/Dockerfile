@@ -15,14 +15,14 @@ RUN rm -rf /var/lib/{apt,dpkg,cache,log}/
 ENV PATH=/root/.vscode-server/bin/:$PATH
 RUN echo "${PATH}" >> /etc/environment
 
-RUN code-server --install-extension ms-python.python
-RUN code-server --install-extension charliermarsh.ruff
-RUN code-server --install-extension donjayamanne.python-environment-manager
+#RUN code-server --install-extension ms-python.python
+#RUN code-server --install-extension charliermarsh.ruff
+#RUN code-server --install-extension donjayamanne.python-environment-manager
 
 RUN mkdir -m 755 -p /vscode
 VOLUME [ "/vscode" ]
 VOLUME [ "/data" ]
-EXPOSE 8000/tcp
+EXPOSE 8000
 
-ENTRYPOINT ["code-server", "serve-local", "--accept-server-license-terms", "--disable-telemetry", "--without-connection-token", "--host", "0.0.0.0"]
+ENTRYPOINT ["code-server", "serve-local", "--accept-server-license-terms", "--disable-telemetry", "--without-connection-token", "--host", "0.0.0.0", "--port","8000","--verbose"]
 
