@@ -17,8 +17,6 @@ RUN echo "${PATH}" >> /etc/environment
 
 RUN code-server --install-extension ms-python.python
 RUN code-server --install-extension charliermarsh.ruff
-RUN code-server --install-extension Codeium.codeium
-RUN code-server --install-extension seatonjiang.gitmoji
 RUN code-server --install-extension donjayamanne.python-environment-manager
 
 RUN mkdir -m 755 -p /vscode
