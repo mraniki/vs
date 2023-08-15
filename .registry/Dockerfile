@@ -12,25 +12,19 @@ RUN apt-get clean autoclean
 RUN apt-get autoremove --yes
 RUN rm -rf /var/lib/{apt,dpkg,cache,log}/
 
-RUN ls root/.vscode-server/bin/
 ENV PATH=/root/.vscode-server/bin/:$PATH
 RUN echo "${PATH}" >> /etc/environment
 
 RUN code-server --install-extension ms-python.python
 RUN code-server --install-extension charliermarsh.ruff
-#Codeium.codeium
-#seatonjiang.gitmoji
-#donjayamanne.python-environment-manager
+RUN code-server --install-extension Codeium.codeium
+RUN code-server --install-extension seatonjiang.gitmoji
+RUN code-server --install-extension donjayamanne.python-environment-manager
 
 RUN mkdir -m 755 -p /vscode
 VOLUME [ "/vscode" ]
 VOLUME [ "/data" ]
-EXPOSE 8443/tcp
-
-#CMD ["/root/.vscode-server/bin/code-server"]
-
-#ENTRYPOINT ["--accept-server-license-terms serve-local --disable-telemetry --without-connection-token --host 0.0.0.0"]
+EXPOSE 8000/tcp
 
 ENTRYPOINT ["code-server", "serve-local", "--accept-server-license-terms", "--disable-telemetry", "--without-connection-token", "--host", "0.0.0.0"]
-
 
