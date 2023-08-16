@@ -9,7 +9,7 @@ RUN wget "https://update.code.visualstudio.com/latest/server-linux-x64/stable" -
     && mkdir -p /root/.vscode-server && cp -r /tmp/vscode-server/*  /root/.vscode-server/.  
 RUN apt-get update
 RUN apt-get clean autoclean
-RUN apt-get autoremove --yes
+#RUN apt-get autoremove --yes
 RUN rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 ENV PATH=/root/.vscode-server/bin/:$PATH
@@ -24,5 +24,6 @@ VOLUME [ "/vscode" ]
 VOLUME [ "/data" ]
 EXPOSE 8000
 
-ENTRYPOINT ["code-server", "serve-local", "--accept-server-license-terms", "--disable-telemetry", "--without-connection-token", "--host", "0.0.0.0", "--port","8000","--verbose"]
+ENTRYPOINT ["code-server", "serve-local", "--accept-server-license-terms", "--disable-telemetry", "--without-connection-token"]
+#, "--host", "0.0.0.0", "--port","8000"]
 
