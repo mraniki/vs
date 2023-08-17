@@ -10,9 +10,7 @@ RUN wget "https://update.code.visualstudio.com/latest/server-linux-x64/stable" -
 
 RUN apt-get update
 
-RUN python -m pip install fastapi
-RUN python -m pip install --user uvicorn
-
+RUN python -m pip install --user fastapi
 
 RUN apt-get clean autoclean
 RUN rm -rf /var/lib/{apt,dpkg,cache,log}/
@@ -28,8 +26,8 @@ RUN code-server --install-extension donjayamanne.python-environment-manager
 RUN code-server --install-extension tamasfe.even-better-toml
 RUN code-server --install-extension VisualStudioExptTeam.vscodeintellicode
 RUN code-server --install-extension esbenp.prettier-vscode
+RUN code-server --install-extension seatonjiang.gitmoji-vscode
 RUN code-server --install-extension Codeium.codeium
-
 
 RUN mkdir -m 755 -p /vscode
 VOLUME [ "/vscode" ]
@@ -38,4 +36,3 @@ EXPOSE 8000
 EXPOSE 8080
 
 ENTRYPOINT ["code-server", "serve-local", "--accept-server-license-terms", "--disable-telemetry", "--without-connection-token", "--host", "0.0.0.0", "--port", "8080]
-
