@@ -31,4 +31,5 @@ VOLUME [ "/data" ]
 EXPOSE 8080
 EXPOSE 8000
 
-ENTRYPOINT ["code-server", "serve-local", "--accept-server-license-terms", "--disable-telemetry", "--without-connection-token", "--host", "0.0.0.0", "--port", "8080"]
+# ENTRYPOINT ["code-server", "serve-local", "--accept-server-license-terms", "--disable-telemetry", "--without-connection-token", "--host", "0.0.0.0", "--port", "8080"]
+ENTRYPOINT ["code-server","--accept-server-license-terms","--without-connection-token", "--host", "0.0.0.0"]
