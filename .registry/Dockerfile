@@ -8,7 +8,7 @@ RUN wget "https://update.code.visualstudio.com/latest/server-linux-x64/stable" -
     && tar --no-same-owner -zxvf /tmp/vscode-server-linux-x64.tar.gz -C /tmp/vscode-server --strip-components=1 \   
     && mkdir -p /root/.vscode-server && cp -r /tmp/vscode-server/*  /root/.vscode-server/.
 
-RUN python -m ensurepip --upgrade
+RUN python3 -m ensurepip --upgrade
 RUN python -m pip install --upgrade pip
 RUN python -m pip install fastapi
 
