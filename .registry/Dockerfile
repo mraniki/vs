@@ -1,6 +1,6 @@
 FROM debian:bookworm-slim
 
-RUN apt update && apt install -y git curl wget python3-dev python3-pip
+RUN apt update && apt install -y git curl wget python3-dev python3-pip python3-venv
 COPY --from=1password/op:2 /usr/local/bin/op /usr/local/bin/op
 
 RUN wget "https://update.code.visualstudio.com/latest/server-linux-x64/stable" -O /tmp/vscode-server-linux-x64.tar.gz \  
@@ -8,11 +8,12 @@ RUN wget "https://update.code.visualstudio.com/latest/server-linux-x64/stable" -
     && tar --no-same-owner -zxvf /tmp/vscode-server-linux-x64.tar.gz -C /tmp/vscode-server --strip-components=1 \   
     && mkdir -p /root/.vscode-server && cp -r /tmp/vscode-server/*  /root/.vscode-server/.
 
-RUN python3 -m ensurepip --upgrade
-RUN python -m pip install --upgrade pip
-RUN python -m pip install fastapi
-
 RUN apt-get update
+
+RUN python -m pip install fastapi
+RUN python -m pip install --user uvicorn
+
+
 RUN apt-get clean autoclean
 RUN rm -rf /var/lib/{apt,dpkg,cache,log}/
 
