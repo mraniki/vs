@@ -9,9 +9,6 @@ RUN wget "https://update.code.visualstudio.com/latest/server-linux-x64/stable" -
     && mkdir -p /root/.vscode-server && cp -r /tmp/vscode-server/*  /root/.vscode-server/.
 
 RUN apt-get update
-RUN pip --version
-RUN pip3 --version
-RUN pip3 install fastapi
 
 RUN apt-get clean autoclean
 RUN rm -rf /var/lib/{apt,dpkg,cache,log}/
