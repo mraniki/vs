@@ -10,18 +10,18 @@ RUN wget "https://update.code.visualstudio.com/latest/server-linux-x64/stable" -
 ENV PATH=/root/.vscode-server/bin/:$PATH
 RUN echo "${PATH}" >> /etc/environment
 
-RUN code-server --install-extension ms-python.python
-    && code-server --install-extension ms-python.vscode-pylance
-    && code-server --install-extension ms-python.black-formatter
-    && code-server --install-extension charliermarsh.ruff
-    && code-server --install-extension donjayamanne.python-environment-manager
-    && code-server --install-extension tamasfe.even-better-toml
-    && code-server --install-extension VisualStudioExptTeam.vscodeintellicode
-    && code-server --install-extension esbenp.prettier-vscode
-    && code-server --install-extension seatonjiang.gitmoji-vscode
+RUN code-server --install-extension ms-python.python \
+    && code-server --install-extension ms-python.vscode-pylance \
+    && code-server --install-extension ms-python.black-formatter \
+    && code-server --install-extension charliermarsh.ruff \
+    && code-server --install-extension donjayamanne.python-environment-manager \
+    && code-server --install-extension tamasfe.even-better-toml \
+    && code-server --install-extension VisualStudioExptTeam.vscodeintellicode \
+    && code-server --install-extension esbenp.prettier-vscode \
+    && code-server --install-extension seatonjiang.gitmoji-vscode \
     && code-server --install-extension Codeium.codeium
 
-RUN apt-get clean autoclean
+RUN apt-get clean autoclean \
     && rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 RUN mkdir -m 755 -p /vscode
