@@ -9,15 +9,21 @@ RUN wget "https://update.code.visualstudio.com/latest/server-linux-x64/stable" -
     && mkdir -p /root/.vscode-server && cp -r /tmp/vscode-server/*  /root/.vscode-server/.  
 RUN apt-get update
 RUN apt-get clean autoclean
-#RUN apt-get autoremove --yes
 RUN rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 ENV PATH=/root/.vscode-server/bin/:$PATH
 RUN echo "${PATH}" >> /etc/environment
 
-#RUN code-server --install-extension ms-python.python
-#RUN code-server --install-extension charliermarsh.ruff
-#RUN code-server --install-extension donjayamanne.python-environment-manager
+RUN code-server --install-extension ms-python.python
+RUN code-server --install-extension ms-python.vscode-pylance
+RUN code-server --install-extension ms-python.black-formatter
+RUN code-server --install-extension charliermarsh.ruff
+RUN code-server --install-extension donjayamanne.python-environment-manager
+RUN code-server --install-extension tamasfe.even-better-toml
+RUN code-server --install-extension VisualStudioExptTeam.vscodeintellicode
+RUN code-server --install-extension esbenp.prettier-vscode
+RUN code-server --install-extension Codeium.codeium
+
 
 RUN mkdir -m 755 -p /vscode
 VOLUME [ "/vscode" ]
@@ -25,5 +31,5 @@ VOLUME [ "/data" ]
 EXPOSE 8000
 EXPOSE 8080
 
-ENTRYPOINT ["code-server", "serve-local", "--accept-server-license-terms", "--disable-telemetry", "--without-connection-token", "--host", "0.0.0.0"]
+ENTRYPOINT ["code-server", "serve-local", "--accept-server-license-terms", "--disable-telemetry", "--without-connection-token", "--host", "0.0.0.0", "--port", "8080]
 
