@@ -10,7 +10,7 @@ RUN wget "https://update.code.visualstudio.com/latest/server-linux-x64/stable" -
 
 RUN apt-get update
 
-RUN python -m pip install --user fastapi
+RUN python3 -m pip3 install fastapi
 
 RUN apt-get clean autoclean
 RUN rm -rf /var/lib/{apt,dpkg,cache,log}/
