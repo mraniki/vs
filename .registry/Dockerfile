@@ -23,6 +23,7 @@ RUN mkdir -m 755 -p /vscode
 VOLUME [ "/vscode" ]
 VOLUME [ "/data" ]
 EXPOSE 8000
+EXPOSE 8080
 
-ENTRYPOINT ["code-server", "serve-local", "--accept-server-license-terms", "--disable-telemetry", "--without-connection-token", "--host", "0.0.0.0", "--port","8000"]
+ENTRYPOINT ["code-server", "serve-local", "--accept-server-license-terms", "--disable-telemetry", "--without-connection-token", "--host", "0.0.0.0"]
 
